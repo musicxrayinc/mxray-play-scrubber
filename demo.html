@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="mxray-play-scrubber.html">
+    <style>
+      mxray-play-scrubber {
+	display: block;
+	width: 70%;
+	height: 30px;
+	border: 1px solid #000;
+      }
+    </style>
+  </head>
+  <body>
+    <template is="dom-bind">
+      <div>
+        <label>duration</label>
+        <input type="text" value="{{duration::input}}"/>
+      </div>
+      <div>
+        <label>playhead</label>
+        <input type="text" value="{{playhead::input}}"/>
+      </div>
+      <mxray-play-scrubber duration="{{duration}}" playhead="{{playhead}}"></mxray-play-scrubber>
+    </template>
+  </body>
+</html>

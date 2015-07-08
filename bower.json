@@ -1,0 +1,31 @@
+{
+  "name": "mxray-play-scrubber",
+  "version": "0.0.0",
+  "homepage": "https://github.com/musicxrayinc/mxray-play-scrubber",
+  "authors": [
+    "jeff durand <jeff.durand@gmail.com>"
+  ],
+  "description": "simple scrub bar for audio container",
+  "main": "mxray-play-scrubber.html",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "mp3",
+    "player",
+    "scrub",
+    "bar"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.3",
+    "polymer": "polymer/polymer#^1.0.3"
+  }
+}

@@ -1,0 +1,68 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<dom-module id="mxray-play-scrubber">
+  <style>
+    :host .top-box {
+      padding: 0px;
+      margin: 0px;
+      border: 0px;
+      height: 100%;
+      width: 100%;
+      background-color: #D1D1D1;
+    }
+    :host .play-fill.black-fill {
+      background-color: #000;
+      height: 100%;
+      padding: 0px;
+      margin: 0px;
+      border: 0px;
+    }
+    
+  </style>
+  <template>
+    <div id="topbox" class="top-box" on-click="_handleTopBoxClick">
+      <div class="play-fill black-fill" style$="{{playhead_percentage}}">
+      </div>
+    </div>
+  </template>
+  <script>
+    Polymer({
+      is: "mxray-play-scrubber",
+      properties: {
+	duration: {
+	  type: Number,
+	  value: 0,
+	  notify: true
+	},
+	playhead: {
+	  type: Number,
+	  value: 0,
+	  notify: true
+	},
+	playhead_percentage: {
+	  type: Number,
+	  computed: '_playhead_percentage(playhead,duration)',
+	}
+      },
+      _handleTopBoxClick: function(evt){
+	var width = this.$.topbox.offsetWidth,
+	clickvalue = evt.offsetX,
+	decimal = clickvalue / width;
+	this.playhead = decimal * this.duration;
+	this.fire('clicked_timeline');
+      },
+      _playhead_percentage: function(playhead, duration){
+	if( duration === 0 ){
+	  return "width: " + 0 + "%";
+	}else{
+	  var val = ( playhead / duration ) * 100.0;
+	  return "width: " + val + "%";
+	}
+      },
+      ready: function(){
+	this.playhead = 100;
+	this.duration = 200;
+      }
+    });
+  </script>
+</dom-module>
