@@ -49,7 +49,7 @@
 	clickvalue = evt.offsetX,
 	decimal = clickvalue / width;
 	this.playhead = decimal * this.duration;
-	this.fire('clicked_timeline', {sender: this));
+	this.fire('clicked_timeline', { origEvent: evt, sender: this});
       },
       _playhead_percentage: function(playhead, duration){
 	if( duration === 0 ){
