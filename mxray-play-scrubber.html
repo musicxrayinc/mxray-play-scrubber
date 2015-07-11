@@ -45,15 +45,11 @@
 	}
       },
       _handleTopBoxClick: function(evt){
+
 	var width = this.$.topbox.offsetWidth,
-	clickvalue = evt.offsetX,
+	clickvalue = evt.offsetX || evt.clientX,
 	decimal = clickvalue / width;
 	this.playhead = decimal * this.duration;
-
-	console.log(decimal);
-	console.log(this.duration);
-	console.log(this.playhead);
-
 	this.fire('clicked_timeline', { origEvent: evt, sender: this});
       },
       _playhead_percentage: function(playhead, duration){
