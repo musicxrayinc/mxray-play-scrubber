@@ -9,19 +9,39 @@
       height: 100%;
       width: 100%;
       background-color: #D1D1D1;
+      position: relative;
+      overflow: hidden;
     }
-    :host .play-fill.black-fill {
-      background-color: #000;
-      height: 100%;
+    :host .play-fill {
+      background-color: var(--play-fill-color, black); 
+      height: inherit;
       padding: 0px;
       margin: 0px;
       border: 0px;
+      position: absolute;
+      z-index: 1;
+      opacity: var(--play-fill-opacity, 1);
     }
+    
+    :host .hover-fill {
+      background-color: var(--hover-fill-color, #333333);
+      /*height: 400px;*/
+      height: inherit;
+      padding: 0px;
+      margin: 0px;
+      border: 0px;
+      position: absolute;
+      z-index: 2;
+      opacity: var(--hover-fill-opacity, 0.6);
+    }
+
     
   </style>
   <template>
-    <div id="topbox" class="top-box" on-click="_handleTopBoxClick">
-      <div class="play-fill black-fill" style$="{{playhead_percentage}}">
+    <div id="topbox" class="top-box" on-click="_handleTopBoxClick" on-mousemove="_handleTopMouse" on-mouseout="_handlTopMouseOut">
+      <div class="play-fill" style$="{{playhead_percentage}}">
+      </div> 
+      <div class="hover-fill" style$="{{hoverhead_percentage}}">
       </div>
     </div>
   </template>
@@ -39,10 +59,31 @@
 	  value: 0,
 	  notify: true
 	},
+	hoverhead: {
+	  type: Number,
+	  value: 0,
+	},
+	hoverhead_percentage: {
+	  type: Number,
+	  computed: '_playhead_percentage(hoverhead,duration)',
+	},
 	playhead_percentage: {
 	  type: Number,
 	  computed: '_playhead_percentage(playhead,duration)',
 	}
+
+      },
+      _handlTopMouseOut: function(evt){
+	this.hoverhead = 0;
+      },
+      _handleTopMouse: function(evt){
+	console.log("what the fuck");
+	console.log(evt);
+	var width = this.$.topbox.offsetWidth,
+	    hovervalue = evt.offsetX || evt.clientX,
+	    decimal = hovervalue / width;
+	    this.hoverhead = decimal * this.duration;
+
       },
       _handleTopBoxClick: function(evt){
 
