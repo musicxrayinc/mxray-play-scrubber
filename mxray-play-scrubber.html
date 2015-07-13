@@ -2,31 +2,35 @@
 
 <dom-module id="mxray-play-scrubber">
   <style>
-    .top-box {
-      padding: 0px;
-      margin: 0px;
-      border: 0px;
-      height: 100%;
-      width: 100%;
-      position: relative;
-      overflow: hidden;
-    }
-    .play-fill {
-      height: inherit;
-      padding: 0px;
-      margin: 0px;
-      border: 0px;
-      position: absolute;
-    }
-    
-    .hover-fill {
-      height: inherit;
-      padding: 0px;
-      margin: 0px;
-      border: 0px;
-      position: absolute;
-    }
-    
+  :host .top-box {
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--top-fill-background-color, #f3f3f3);
+  }
+  :host .play-fill {
+    height: inherit;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    position: absolute;
+    background-color: var(--play-fill-background-color, #333333);
+    opacity: var(--play-fill-opacity, 1);
+  }
+  :host .hover-fill {
+    height: inherit;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    position: absolute;
+    background-color: var(--hover-fill-background-color, #333333);
+    opacity: var(--hover-fill-opacity, 0.4);
+  }
+  
   </style>
   <template>
     <div id="topbox" class="top-box" on-click="_handleTopBoxClick" on-mousemove="_handleTopMouse" on-mouseout="_handlTopMouseOut">
