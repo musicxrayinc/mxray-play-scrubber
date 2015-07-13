@@ -2,36 +2,30 @@
 
 <dom-module id="mxray-play-scrubber">
   <style>
-    :host .top-box {
+    .top-box {
       padding: 0px;
       margin: 0px;
       border: 0px;
       height: 100%;
       width: 100%;
-      background-color: #D1D1D1;
       position: relative;
       overflow: hidden;
     }
-    :host .play-fill {
-      background-color: var(--play-fill-color, #222222); 
+    .play-fill {
       height: inherit;
       padding: 0px;
       margin: 0px;
       border: 0px;
       position: absolute;
-      opacity: var(--play-fill-opacity, 1);
     }
     
-    :host .hover-fill {
-      background-color: var(--hover-fill-color, #444444);
+    .hover-fill {
       height: inherit;
       padding: 0px;
       margin: 0px;
       border: 0px;
       position: absolute;
-      opacity: var(--hover-fill-opacity, 0.6);
     }
-
     
   </style>
   <template>
