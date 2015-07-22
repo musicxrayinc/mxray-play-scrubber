@@ -33,7 +33,7 @@
   
   </style>
   <template>
-    <div id="topbox" class="top-box" on-click="_handleTopBoxClick" on-mousemove="_handleTopMouse" on-mouseout="_handlTopMouseOut">
+    <div id="topbox" class="top-box" on-tap="_handleTopBoxClick" on-mousemove="_handleTopMouse" on-mouseout="_handlTopMouseOut">
       <div class="play-fill" style$="{{playhead_percentage}}">
       </div> 
       <div class="hover-fill" style$="{{hoverhead_percentage}}">
@@ -78,9 +78,12 @@
 
       },
       _handleTopBoxClick: function(evt){
+
         var width = this.$.topbox.offsetWidth,
-	      clickvalue = evt.offsetX || evt.layerX || evt.clientX,
-        decimal = clickvalue / width;
+          offset = this.$.topbox.getBoundingClientRect().left,
+          clickvalue = evt.detail.x,
+          decimal = (clickvalue-offset) / width;
+
         this.playhead = decimal * this.duration;
         this.fire('clicked_timeline', { origEvent: evt, sender: this});
       },
