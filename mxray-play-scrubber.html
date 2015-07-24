@@ -30,12 +30,23 @@
     background-color: var(--hover-fill-background-color, #333333);
     opacity: var(--hover-fill-opacity, 0.4);
   }
-  
+  :host ::content mxray-waveform {
+    height: inherit; 
+    width: inherit;
+    display: block;
+    position: absolute;
+    padding: 0px;
+    margin: 0px; 
+    border: 0px;
+    overflow: hidden;
+    opacity: var(--waveform-fill-opacity, 0.3);
+  }
   </style>
   <template>
     <div id="topbox" class="top-box" on-tap="_handleTopBoxClick" on-mousemove="_handleTopMouse" on-mouseout="_handlTopMouseOut">
       <div class="play-fill" style$="{{playhead_percentage}}">
       </div> 
+      <content select="mxray-waveform"></content>
       <div class="hover-fill" style$="{{hoverhead_percentage}}">
       </div>
     </div>
